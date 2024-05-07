@@ -125,7 +125,8 @@
 // }
 
 import 'package:flutter/material.dart';
-import '/ui/poli_page.dart';
+import 'ui/poli_page.dart';
+import '/ui/pegawai_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -136,7 +137,9 @@ class MyApp extends StatelessWidget {
       title: 'Klinik APP', // 1. Menyertakan judul aplikasi
       debugShowCheckedModeBanner:
           false, // 2. Menghilangkan banner debug pada aplikasi
-      home: PoliPage(), // 3. Menjadikan PoliPage sebagai halaman utama aplikasi
+      // home: PoliPage(), // 3. Menjadikan PoliPage sebagai halaman utama aplikasi
+      home:
+          PegawaiPage(), // 3. Menjadikan PoliPage sebagai halaman utama aplikasi
     );
   }
 }

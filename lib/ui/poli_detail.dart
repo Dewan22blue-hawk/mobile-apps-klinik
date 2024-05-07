@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'poli_update_form.dart'; // Mengimport PoliUpdateForm
 import '../model/poli.dart';
 
 class PoliDetail extends StatefulWidget {
-  final Poli poli; // 1. Mendeklarasikan variabel poli dengan tipe Poli
+  final Poli poli; // Deklarasi variabel poli
 
-  const PoliDetail(
-      {Key? key,
-      required this.poli}); // 2. Konstruktor untuk kelas PoliDetail dengan parameter poli yang wajib diisi
+  const PoliDetail({Key? key, required this.poli})
+      : super(key: key); // Konstruktor untuk PoliDetail
 
   @override
   State<PoliDetail> createState() =>
-      _PoliDetailState(); // 3. Membuat dan mengembalikan objek _PoliDetailState
+      _PoliDetailState(); // Menginisialisasi state untuk PoliDetail
 }
 
 class _PoliDetailState extends State<PoliDetail> {
@@ -18,97 +18,65 @@ class _PoliDetailState extends State<PoliDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Detail Poli"),
-        backgroundColor: Colors.blueAccent,
-      ), // 4. Menampilkan judul "Detail Poli" pada AppBar
+          title: Text(
+              "Detail Poli")), // Menampilkan judul "Detail Poli" pada AppBar
       body: Column(
+        // Menampilkan konten dalam bentuk kolom
         children: [
-          SizedBox(height: 20),
+          // Menampilkan elemen-elemen berikut dalam kolom
+          SizedBox(
+              height: 20), // Spacer kosong untuk memberi jarak antara elemen
           Text(
-            "Nama Poli : ${widget.poli.namaPoli}", // 5. Menampilkan teks "Nama Poli : ...nama poli..." dengan menggunakan nilai dari widget.poli.namaPoli
-            style: TextStyle(fontSize: 20),
+            // Menampilkan teks dengan nama poli
+            "Nama Poli : ${widget.poli.namaPoli}", // Mendapatkan nama poli dari widget
+            style: TextStyle(fontSize: 20), // Mengatur gaya teks
           ),
-          SizedBox(height: 20),
-          DataTableExample(),
-          SizedBox(height: 20),
+          SizedBox(
+              height: 20), // Spacer kosong untuk memberi jarak antara elemen
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // Menampilkan tombol ubah dan hapus dalam satu baris
+            mainAxisAlignment: MainAxisAlignment
+                .spaceEvenly, // Menyusun tombol dengan jarak yang sama di sepanjang baris
             children: [
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                child: const Text(
-                    "Ubah"), // 6. Membuat tombol dengan teks "Ubah" yang berwarna hijau
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child: const Text(
-                    "Hapus"), // 7. Membuat tombol dengan teks "Hapus" yang berwarna merah
-              ),
+              // Menampilkan elemen-elemen berikut dalam baris
+              _tombolUbah(), // Memanggil method untuk menampilkan tombol ubah
+              _tombolHapus(), // Memanggil method untuk menampilkan tombol hapus
             ],
-          ),
+          )
         ],
       ),
     );
   }
-}
 
-class DataTableExample extends StatelessWidget {
-  const DataTableExample({super.key});
+  _tombolUbah() {
+    // Method untuk menampilkan tombol ubah
+    return ElevatedButton(
+      onPressed: () {
+        // Aksi yang akan dijalankan ketika tombol ditekan
+        Navigator.push(
+          // Navigasi ke halaman PoliUpdateForm
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  PoliUpdateForm(poli: widget.poli)), // Mengirimkan data poli
+        );
+      },
+      style: ElevatedButton.styleFrom(
+          backgroundColor: Colors
+              .green), // Mengatur warna latar belakang tombol menjadi hijau
+      child: const Text("Ubah"), // Menampilkan teks "Ubah" pada tombol
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return DataTable(
-      columns: const <DataColumn>[
-        DataColumn(
-          label: Expanded(
-            child: Text(
-              'Name',
-              style: TextStyle(fontStyle: FontStyle.italic),
-            ),
-          ),
-        ),
-        DataColumn(
-          label: Expanded(
-            child: Text(
-              'Age',
-              style: TextStyle(fontStyle: FontStyle.italic),
-            ),
-          ),
-        ),
-        DataColumn(
-          label: Expanded(
-            child: Text(
-              'Role',
-              style: TextStyle(fontStyle: FontStyle.italic),
-            ),
-          ),
-        ),
-      ],
-      rows: const <DataRow>[
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('Denny')),
-            DataCell(Text('20')),
-            DataCell(Text('Doctoral')),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('Wahyu')),
-            DataCell(Text('21')),
-            DataCell(Text('Professor')),
-          ],
-        ),
-        DataRow(
-          cells: <DataCell>[
-            DataCell(Text('Falah')),
-            DataCell(Text('22')),
-            DataCell(Text('Associate Professor')),
-          ],
-        ),
-      ],
+  _tombolHapus() {
+    // Method untuk menampilkan tombol hapus
+    return ElevatedButton(
+      onPressed:
+          () {}, // Belum ditentukan aksi yang akan dilakukan saat tombol ditekan
+      style: ElevatedButton.styleFrom(
+          backgroundColor:
+              Colors.red), // Mengatur warna latar belakang tombol menjadi merah
+      child: const Text("Hapus"), // Menampilkan teks "Hapus" pada tombol
     );
   }
 }
