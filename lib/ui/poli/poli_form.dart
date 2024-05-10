@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart'; // Import library Flutter untuk pengembangan UI
 import 'package:klinik_mobile_apps/model/poli.dart'; // Import model Poli
-import 'package:klinik_mobile_apps/ui/poli_detail.dart'; // Import UI PoliDetail
+import 'package:klinik_mobile_apps/ui/poli/poli_detail.dart'; // Import UI PoliDetail
 
 class PoliForm extends StatefulWidget {
   // Deklarasi kelas PoliForm sebagai StatefulWidget

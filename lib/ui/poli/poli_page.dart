@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Import model Poli untuk digunakan dalam halaman PoliPage
-import '../model/poli.dart';
+import '../../model/poli.dart';
 
 // Import halaman PoliDetail untuk menavigasi ke detail poli
 import 'poli_detail.dart';

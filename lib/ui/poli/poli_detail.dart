@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:klinik_mobile_apps/ui/poli/poli_page.dart';
 import 'poli_update_form.dart'; // Mengimport PoliUpdateForm
-import '../model/poli.dart';
+import '../../model/poli.dart';
 
 class PoliDetail extends StatefulWidget {
   final Poli poli; // Deklarasi variabel poli
@@ -71,8 +72,32 @@ class _PoliDetailState extends State<PoliDetail> {
   _tombolHapus() {
     // Method untuk menampilkan tombol hapus
     return ElevatedButton(
-      onPressed:
-          () {}, // Belum ditentukan aksi yang akan dilakukan saat tombol ditekan
+      onPressed: () {
+        AlertDialog alertDialog = AlertDialog(
+          content: const Text("Apakah anda yakin menghapus data ini?"),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(
+                    context); // Aksi yang akan dilakukan saat tombol ditekan
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => PoliPage()));
+              },
+              child: Text("Ya"),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(
+                    context); // Aksi yang akan dilakukan saat tombol ditekan
+              },
+              child: Text("Tidak"),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+            )
+          ],
+        );
+        showDialog(context: context, builder: (context) => alertDialog);
+      }, // Belum ditentukan aksi yang akan dilakukan saat tombol ditekan
       style: ElevatedButton.styleFrom(
           backgroundColor:
               Colors.red), // Mengatur warna latar belakang tombol menjadi merah

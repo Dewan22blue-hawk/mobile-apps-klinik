@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../model/poli.dart'; // Mengimport model Poli
-import '../ui/poli_detail.dart'; // Mengimport UI PoliDetail
+import '../../model/poli.dart'; // Mengimport model Poli
+import 'poli_detail.dart'; // Mengimport UI PoliDetail
 
 class PoliUpdateForm extends StatefulWidget {
   final Poli poli; // Deklarasi variabel poli

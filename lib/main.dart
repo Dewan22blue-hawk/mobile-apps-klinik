@@ -125,6 +125,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:klinik_mobile_apps/ui/beranda.dart';
 import 'ui/poli/poli_page.dart';
 import 'ui/pegawai/pegawai_page.dart';
 
@@ -139,7 +140,8 @@ class MyApp extends StatelessWidget {
           false, // 2. Menghilangkan banner debug pada aplikasi
       // home: PoliPage(), // 3. Menjadikan PoliPage sebagai halaman utama aplikasi
       home:
-          PegawaiPage(), // 3. Menjadikan PoliPage sebagai halaman utama aplikasi
+          // PegawaiPage(), // 3. Menjadikan PoliPage sebagai halaman utama aplikasi
+          Beranda(), // 3. Menjadikan PoliPage sebagai halaman utama aplikasi
     );
   }
 }

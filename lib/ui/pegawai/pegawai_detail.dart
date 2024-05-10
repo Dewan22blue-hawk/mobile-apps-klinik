@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pegawai_update_form.dart';
-import '../model/pegawai.dart';
+import '../../model/pegawai.dart';
+import 'pegawai_form.dart';
 
 class PegawaiDetail extends StatefulWidget {
   final Pegawai pegawai;
@@ -14,7 +15,21 @@ class _PegawaiDetailState extends State<PegawaiDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Detail Pegawai")),
+      appBar: AppBar(
+        title: Text("Detail Pegawai"),
+        actions: [
+          GestureDetector(
+            child: Container(
+              child: const Icon(Icons.add),
+              padding: EdgeInsets.all(20),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PegawaiForm()));
+            },
+          )
+        ],
+      ),
       body: Column(
         children: [
           SizedBox(height: 20),

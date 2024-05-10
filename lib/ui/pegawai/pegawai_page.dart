@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:klinik_mobile_apps/model/poli.dart';
+import 'package:klinik_mobile_apps/ui/poli/poli_page.dart';
+import 'package:klinik_mobile_apps/widget/sidebar.dart';
+
 import '../../model/pegawai.dart';
 import '../../model/pasien.dart';
-import 'pegawai_detail.dart';
-import '../pasien/pasien_detail.dart';
+
 import 'pegawai_item.dart';
 import '../pasien/pasien_item.dart';
 import '../poli/poli_item.dart';
@@ -20,6 +22,7 @@ class _PegawaiPageState extends State<PegawaiPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Sidebar(),
       appBar: AppBar(
         title: const Text("Data RS"),
         actions: [
@@ -39,7 +42,16 @@ class _PegawaiPageState extends State<PegawaiPage> {
         children: [
           PegawaiItem(pegawai: Pegawai(namaPegawai: "Pegawai")),
           PasienItem(pasien: Pasien(namaPasien: "Pasien")),
-          PoliItem(poli: Poli(namaPoli: "Poli")),
+          // PoliItem(poli: Poli(namaPoli: "Poli")),
+
+          GestureDetector(
+              child: Card(
+                child: ListTile(title: Text("Poli")),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PoliPage()));
+              }),
         ],
       ),
     );
